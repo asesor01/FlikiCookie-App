@@ -264,7 +264,7 @@ export default function AIKitchenChat({ onApplyPreset, currentSpec }: AIKitchenC
               }
             }}
             className={`p-2 rounded-full transition-all cursor-pointer ${
-              isSpeechEnabled ? "bg-art-accent text-art-bg scale-105" : "text-art-muted hover:bg-white/10"
+              isSpeechEnabled ? "bg-art-accent text-art-bg scale-105" : "text-white hover:bg-white/10"
             }`}
             title={isSpeechEnabled ? "Desactivar voz de Chef" : "Activar voz de Chef (Español)"}
             id="btn_voice_output"
@@ -283,7 +283,7 @@ export default function AIKitchenChat({ onApplyPreset, currentSpec }: AIKitchenC
                 },
               ]);
             }}
-            className="p-2 text-art-muted hover:bg-white/10 rounded-full transition-colors cursor-pointer"
+            className="p-2 text-white hover:bg-white/10 rounded-full transition-colors cursor-pointer"
             title="Reiniciar chat"
             id="btn_reset_chat"
           >
