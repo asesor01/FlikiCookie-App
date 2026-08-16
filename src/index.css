@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  
+  /* Colores principales de Flikicookie - alto contraste y branding */
+  --color-art-bg: #FDF8F3;
+  --color-art-text: #1A0F0A;
+  --color-art-accent: #E91E8C;
+  --color-art-accent-hover: #D1177D;
+  --color-art-muted: #2D1F15;
+  --color-art-panel: #FAF2EB;
+  --color-art-border: #E5A84B;
+  --color-art-card: #FAF7F2;   --color-art-line: #D9C5B2;
+  --color-art-linesoft: #EAE0D5; --color-art-brown: #523A2A;
+  --color-art-deep: #3D2B1F;   --color-art-soft: #8C7A6B;
+  --color-art-cream: #EAD8C3;  --color-art-cream-soft: #D1C3B7;
+  --color-art-cream-text: #E6DBD0; --color-art-dark: #4D3A2C;
+  --color-art-dark-line: #5C4839; --color-art-rose: #FFB6C1;
+  --color-art-caramel: #C25E00; --color-wa: #25D366;
+  --color-wa-dark: #20BA5C;    --color-wa-deep: #128C7E;
+  --color-wa-darkest: #075E54; --color-wa-bg: #ECE5DD;
+  --color-social-fb: #3b5998;  --color-social-ig: #e1306c;
+  --color-social-ig-deep: #C13584;
+}
+
+/* Custom aesthetic adjustments */
+body {
+  background-color: var(--color-art-bg);
+  color: var(--color-art-text);
+  font-family: var(--font-sans);
+  font-size: 16px; /* Incrementado a 16px para mayor legibilidad */
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Mejorar contraste de texto */
+* {
+  text-rendering: optimizeLegibility;
+}
+
+/* Base text colors - highly readable */
+h1, h2, h3, h4, h5, h6 {
+  color: #1A0F0A;
+  font-weight: 700;
+}
+
+p, span, label, td, th {
+  color: #1A0F0A; /* Más oscuro para contraste óptimo */
+}
+
+/* Form inputs - better contrast */
+input, textarea, select {
+  color: #1A0F0A;
+  background-color: #FFFFFF;
+  border-color: #E5A84B;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #5D4E37;
+}
+
+/* Buttons */
+button {
+  font-weight: 600;
+}
+
+.font-serif-italic {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+/* Animación fade-in suave */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FDF8F3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E5A84B;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E91E8C;
+}
+
+/* Utility classes for better readability - slightly larger and darker */
+.text-readable {
+  color: #1A0F0A;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.text-readable-sm {
+  color: #2D1F15;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.text-readable-xs {
+  color: #3D2B1F;
+  font-size: 13px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.text-heading {
+  color: #1A0F0A;
+  font-weight: 700;
+}
+
+/* Override Tailwind art-* colors for better readability and brand colors */
+.text-art-text { color: #1A0F0A !important; }
+.text-art-muted { color: #3D2B1F !important; }
+.text-art-accent { color: #E91E8C !important; }
+.bg-art-panel { background-color: #FAF2EB !important; }
+.bg-art-bg { background-color: #FDF8F3 !important; }
+.border-art-border { border-color: #E5A84B !important; }
+
+/* Light text utility for dark headers */
+.text-art-bg { color: var(--color-art-bg) !important; }
+
+/* Dark background utility using brand text color (use with .text-art-bg for readable text) */
+.bg-art-text { background-color: var(--color-art-text) !important; }
+.border-art-text { border-color: var(--color-art-text) !important; }
+
+/* Better focus states */
+input:focus, textarea:focus, select:focus {
+  border-color: #E91E8C !important;
+  box-shadow: 0 0 0 2px rgba(233, 30, 140, 0.2) !important;
+}
+
+/* Better button contrast */
+button.bg-art-accent { background-color: #E91E8C !important; color: #FFFFFF !important; }
+button.bg-art-accent:hover { background-color: #D1177D !important; }
+
+/* Specific accessibility overrides to correct generic muted Tailwind styles */
+.text-slate-400, 
+.text-slate-500, 
+.text-slate-600, 
+.text-gray-400, 
+.text-gray-500, 
+.text-gray-600,
+.text-stone-400,
+.text-stone-500,
+.text-zinc-500 {
+  color: #2D1F15 !important; /* Darker warm brown instead of gray */
+}
+
+.text-slate-300, 
+.text-gray-300 {
+  color: #4A3728 !important; /* Darker gray-brown */
+}
+
+/* Table overrides inside AdminDashboard */
+#admin_dashboard_root th {
+  background-color: #FAF2EB !important;
+  color: #1A0F0A !important;
+  font-weight: 700 !important;
+  font-size: 13.5px !important;
+  border-bottom: 2px solid #E5A84B !important;
+}
+
+#admin_dashboard_root td {
+  color: #1A0F0A !important;
+  font-size: 13.5px !important;
+  border-bottom: 1px solid #FAF2EB !important;
+}
+
+/* Tab bar active indicator contrast */
+.border-art-accent {
+  border-color: #E91E8C !important;
+}
+.text-art-accent {
+  color: #E91E8C !important;
+}
+
+/* Brand accent utility classes */
+.bg-art-accent { background-color: var(--color-art-accent) !important; }
+.bg-art-accent-5 { background-color: rgba(233,30,140,0.05) !important; }
+.bg-art-accent-10 { background-color: rgba(233,30,140,0.10) !important; }
+.ring-art-accent { box-shadow: 0 0 0 3px rgba(233,30,140,0.12) !important; }
+.border-art-accent-strong { border-color: var(--color-art-accent) !important; }
+.text-art-accent-dark { color: #D1177D !important; }
+.hover\:bg-art-accent-hover:hover { background-color: var(--color-art-accent-hover) !important; }
+.focus-ring-art-accent:focus { box-shadow: 0 0 0 3px rgba(233,30,140,0.12); border-color: var(--color-art-accent); }
+
+/* Gold / Caramel background helper (maps to brand border/gold token) */
+.bg-art-border { background-color: var(--color-art-border) !important; }
+.text-art-border { color: var(--color-art-border) !important; }
+/* 10% opacity helpers for brand colors */
+.bg-art-border-10 { background-color: rgba(229,168,75,0.10) !important; }
+.bg-art-accent-10 { background-color: rgba(233,30,140,0.10) !important; }
+
+/* Gradient helper (use as class on container) */
+.gradient-art { background-image: linear-gradient(90deg, var(--color-art-accent) 0%, var(--color-art-border) 100%); }
+
+/* Soft panel background using caramel token */
+.panel-soft { background-color: var(--color-art-panel) !important; color: var(--color-art-text) !important; }
+
+/* Text color using caramel / border token */
+.text-art-border { color: var(--color-art-border) !important; }
+
+.text-art-muted { color: var(--color-art-muted) !important; }
+
+
+

@@ -1,0 +1,6 @@
+{
+  "name": "FLIKICOOKIE, ARTESANAL BAKERY",
+  "description": "Sistema completo para una pastelería moderna con diseñador interactivo de pasteles, chat con un Chef Repostero de IA (con soporte de texto y voz), catálogo de delicias, panel administrativo de gestión de pedidos y análisis inteligente de cocina.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

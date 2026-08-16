@@ -1,0 +1,142 @@
+{
+  "entities": {
+    "MenuItem": {
+      "title": "MenuItem",
+      "description": "Un producto ofrecido en el catálogo de FLIKICOOKIE, ARTESANAL BAKERY.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "ID único del producto"
+        },
+        "name": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Nombre de la delicia"
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "Descripción detallada del producto"
+        },
+        "price": {
+          "type": "number",
+          "description": "Precio en pesos chilenos (CLP)"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["pasteles", "panaderia", "reposteria", "bebidas"],
+          "description": "Categoría de producto"
+        },
+        "image": {
+          "type": "string",
+          "description": "Identificador visual del producto o tipo de imagen"
+        },
+        "prepTime": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Tiempo de preparación aproximado"
+        },
+        "allergens": {
+          "type": "array",
+          "description": "Lista de alérgenos que contiene"
+        }
+      },
+      "required": ["id", "name", "description", "price", "category", "image", "prepTime"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Un pedido de productos estándar o personalizados realizado por un cliente.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^PED-[0-9]{4}$",
+          "description": "ID de orden formateado (ej: PED-1022)"
+        },
+        "customerName": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Nombre completo del cliente"
+        },
+        "customerPhone": {
+          "type": "string",
+          "maxLength": 30,
+          "description": "Número telefónico de contacto"
+        },
+        "customerEmail": {
+          "type": "string",
+          "format": "email",
+          "maxLength": 100,
+          "description": "Correo electrónico"
+        },
+        "orderType": {
+          "type": "string",
+          "enum": ["Entrega a Domicilio", "Retiro en Tienda"],
+          "description": "Modalidad de entrega"
+        },
+        "deliveryDate": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Fecha acordada de entrega"
+        },
+        "deliveryTime": {
+          "type": "string",
+          "maxLength": 10,
+          "description": "Hora acordada de entrega"
+        },
+        "deliveryAddress": {
+          "type": "string",
+          "maxLength": 300,
+          "description": "Dirección completa si es despacho a domicilio"
+        },
+        "items": {
+          "type": "array",
+          "description": "Detalle de ítems de compra"
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "Costo final total de la transacción"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["Pendiente", "En Preparación", "En Horno", "Decorando", "Listo", "Entregado"],
+          "description": "Estado actual del pedido en taller"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Instante ISO de registro"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "enum": ["Efectivo", "Tarjeta", "Transferencia"],
+          "description": "Medio de pago"
+        }
+      },
+      "required": [
+        "id",
+        "customerName",
+        "customerPhone",
+        "customerEmail",
+        "orderType",
+        "deliveryDate",
+        "deliveryTime",
+        "items",
+        "totalAmount",
+        "status",
+        "createdAt",
+        "paymentMethod"
+      ]
+    }
+  },
+  "firestore": {
+    "menu/{menuId}": {
+      "schema": "MenuItem",
+      "description": "Catálogo de delicias y productos de repostería."
+    },
+    "orders/{orderId}": {
+      "schema": "Order",
+      "description": "Órdenes de clientes y pedidos de pastelería personalizados."
+    }
+  }
+}

@@ -1,0 +1,62 @@
+changes:
+  summary: "Registro de cambios aplicados y tareas pendientes en el repo FlikiCookie-App"
+  date: "2026-08-12"
+  hex_matches_remaining_estimate: 206
+
+  applied_changes:
+    - file: src/index.css
+      changes:
+        - "Creación y centralización de tokens de marca (colores, utilidades, gradientes)."
+        - "Definidas variables: --color-art-bg, --color-art-text, --color-art-accent, --color-art-border, --color-art-panel, --color-art-muted."
+
+    - file: src/components/CakeVisualizer.tsx
+      changes:
+        - "Reemplazados hex del stand y sombras por variables (panel, border, muted)."
+        - "Mapeado getFillingColor() para devolver variables de marca en vez de hex."
+
+    - file: src/components/WhatsAppFloatingWidget.tsx
+      changes:
+        - "Reemplazo de verdes hex por clases de token: bg-art-accent, border-art-border, focus:ring-art-accent."
+
+    - file: src/components/WhatsAppPanel.tsx
+      changes:
+        - "Cabecera, avatares y burbujas actualizadas para usar tokens (art-accent, art-panel, art-border)."
+
+    - file: src/components/OrderTracking.tsx
+      changes:
+        - "Estilos del comprobante de impresión actualizados para usar variables de marca en CSS embebido."
+        - "Varios paneles y badges convertidos a utilidades tokenizadas." 
+
+    - file: src/components/Catalog.tsx
+      changes:
+        - "Tokens aplicados a banner, badges, tarjetas de producto y botones; eliminado duplicados de className."
+
+    - file: src/components/CommunicationAgent.tsx
+      changes:
+        - "Pequeños reemplazos de color (títulos, etiquetas) por tokens de marca."
+
+    - file: src/components/FAQPage.tsx
+      changes:
+        - "Reemplazo de hex en hover/background/botón WhatsApp por tokens; modal edit uses token text colors."
+
+    - file: src/components/LandingPage.tsx
+      changes:
+        - "Nav md:left-72 aplicado; hero copy preserved exactly as requested."
+        - "Badges, CTA, gradients y secciones convertidas para usar tokens (acento, border, panel, muted)."
+
+    - file: src/components/AdminDashboard.tsx
+      changes:
+        - "Varios bloques de CSS embebido (facturas/ordenes) actualizados para usar variables de marca en lugar de hex."
+
+  remaining_work:
+    - "Completar limpieza total de hex restantes en todo src/** (estimado ~206 matches actualmente)."
+    - "Terminar tokenización de CakeVisualizer (si hay más hex en SVG stops o fills)."
+    - "Convertir referencias a Emblema Flikicookie a imports ES (reemplazar cadenas '/src/assets/images/Emblema%20Flikicookie.png' por imports)."
+    - "Finalizar limpieza de HTML inline en AdminDashboard (invoices, tablas y estilos embebidos)."
+    - "Ejecutar dev server y hacer QA visual en breakpoints (md+, mobile) — verificar z-index y solapamiento del logo con la barra superior y color del botón carrito."
+    - "Revisar accesibilidad: contraste de textos, focus states y tamaños base (16px ya aplicado)."
+
+notes:
+  - "Se preservó exactamente el hero text solicitado: 'En FlikiCookie creamos tortas, galletas y pasteles artesanales que convierten cada celebración en un recuerdo especial.'"
+  - "No se inventaron nuevos colores; se usaron tokens derivados de la paleta del logo (rosado fluorescente, caramelo/dorado, azul cielo)."
+  - "Próximo paso recomendado: ejecutar grep para hex restantes, aplicar reemplazos a archivos listados en 'remaining_work', luego levantar el servidor y verificar visualmente."
