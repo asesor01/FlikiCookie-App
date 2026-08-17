@@ -2,10 +2,10 @@
 import { Cake, Cookie, Coffee, Heart, Star, MapPin, Phone, Instagram, MessageCircle, ChevronRight, Menu, X, Clock, Award, Truck, Sparkles, ArrowRight } from "lucide-react";
 
 const MENU_HIGHLIGHTS = [
-  { name: "Tortas Personalizadas", description: "DiseÃ±os Ãºnicos para tus momentos especiales", icon: Cake, priceDesde: "S/. 85", target: "designer" },
+  { name: "Tortas Personalizadas", description: "Diseños únicos para tus momentos especiales", icon: Cake, priceDesde: "S/. 85", target: "designer" },
   { name: "Galletas Artesanales", description: "Deliciosas galletas con sabores irresistibles", icon: Cookie, priceDesde: "S/. 3", target: "catalog:rellenas" },
   { name: "Pasteles Creativos", description: "Obras de arte comestibles que sorprenden", icon: Sparkles, priceDesde: "S/. 120", target: "catalog:especiales" },
-  { name: "CafÃ© & Bebidas", description: "AcompaÃ±a tus dulces con nuestra selecciÃ³n", icon: Coffee, priceDesde: "S/. 8", target: "catalog:bebidas" },
+  { name: "Café & Bebidas", description: "Acompaña tus dulces con nuestra selección", icon: Coffee, priceDesde: "S/. 8", target: "catalog:bebidas" },
 ];
 
 type Tab = "landing" | "designer" | "catalog" | "track" | "admin" | "faq" | "reviews";
@@ -36,11 +36,11 @@ export default function LandingPage({ onNavigate }: { onNavigate?: (tab: Tab, ca
               </div>
             </div>
             <div className="hidden md:flex items-center gap-8">
-              {[{label:"Inicio",id:"hero"},{label:"Nosotros",id:"about"},{label:"MenÃº",id:"menu"},{label:"Opiniones",id:"testimonials"},{label:"Contacto",id:"contact"}].map((item) => (
+              {[{label:"Inicio",id:"hero"},{label:"Nosotros",id:"about"},{label:"Menú",id:"menu"},{label:"Opiniones",id:"testimonials"},{label:"Contacto",id:"contact"}].map((item) => (
                 <button key={item.id} onClick={() => scrollToSection(item.id)} className="text-[15px] font-semibold text-art-muted hover:text-art-accent transition-colors cursor-pointer">{item.label}</button>
               ))}
               <button onClick={() => go("catalog")} className="bg-art-accent hover:bg-art-accent-hover text-white px-5 py-2.5 rounded-full text-sm font-bold flex items-center gap-2 transition-all hover:scale-105 cursor-pointer">
-                <Cookie className="w-4 h-4" /> CatÃ¡logo & MenÃº
+                <Cookie className="w-4 h-4" /> Catálogo & Menú
               </button>
             </div>
             <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2 rounded-lg hover:bg-art-border-10 transition-colors">
@@ -51,10 +51,10 @@ export default function LandingPage({ onNavigate }: { onNavigate?: (tab: Tab, ca
         {isMenuOpen && (
           <div className="md:hidden bg-white border-t border-art-border shadow-lg">
             <div className="px-4 py-4 space-y-3">
-              {["Inicio","Nosotros","MenÃº","Opiniones","Contacto"].map((label) => (
+              {["Inicio","Nosotros","Menú","Opiniones","Contacto"].map((label) => (
                 <button key={label} onClick={() => scrollToSection(label.toLowerCase()==="inicio"?"hero":label.toLowerCase()==="nosotros"?"about":label.toLowerCase()==="opiniones"?"testimonials":label.toLowerCase())} className="block w-full text-left px-4 py-3 rounded-lg text-art-muted hover:bg-art-border-10 transition-colors font-medium">{label}</button>
               ))}
-              <button onClick={() => go("catalog")} className="block w-full bg-art-accent text-white text-center px-4 py-3 rounded-full font-bold cursor-pointer">CatÃ¡logo & MenÃº</button>
+              <button onClick={() => go("catalog")} className="block w-full bg-art-accent text-white text-center px-4 py-3 rounded-full font-bold cursor-pointer">Catálogo & Menú</button>
             </div>
           </div>
         )}
@@ -65,7 +65,7 @@ export default function LandingPage({ onNavigate }: { onNavigate?: (tab: Tab, ca
           <div className="grid lg:grid-cols-2 gap-10 items-start">
             <div className="space-y-6">
               <div className="inline-flex items-center gap-2 bg-art-border-10 px-4 py-2 rounded-full">
-                <MapPin className="w-4 h-4 text-art-border" /><span className="text-sm font-medium text-art-muted">Cusco, PerÃº</span>
+                <MapPin className="w-4 h-4 text-art-border" /><span className="text-sm font-medium text-art-muted">Cusco, Perú</span>
               </div>
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
                 <span className="text-art-muted">Momentos</span><br />
@@ -73,15 +73,15 @@ export default function LandingPage({ onNavigate }: { onNavigate?: (tab: Tab, ca
                 <span className="text-art-muted">Inolvidables</span>
               </h1>
               <p className="text-lg text-art-muted max-w-lg leading-relaxed">
-                En FlikiCookie creamos tortas, galletas y pasteles artesanales que convierten cada celebraciÃ³n en un recuerdo especial.
+                En FlikiCookie creamos tortas, galletas y pasteles artesanales que convierten cada celebración en un recuerdo especial.
                 <span className="font-bold text-art-text"> Hechos con amor en Cusco.</span>
               </p>
               <div className="flex flex-wrap gap-3">
                 <button onClick={() => go("designer")} className="bg-art-accent hover:bg-art-accent-hover text-white px-6 py-3.5 rounded-full font-bold text-base flex items-center gap-2 transition-all hover:scale-105 shadow-lg shadow-art-accent/30 cursor-pointer">
-                  <Cake className="w-5 h-5" /> DiseÃ±a tu Pastel
+                  <Cake className="w-5 h-5" /> Diseña tu Pastel
                 </button>
                 <button onClick={() => go("catalog")} className="border-2 border-art-border text-art-muted px-6 py-3.5 rounded-full font-bold text-base hover:bg-art-border hover:text-art-bg transition-all cursor-pointer">
-                  CatÃ¡logo & MenÃº
+                  Catálogo & Menú
                 </button>
                 <a href="https://wa.me/51970442173" target="_blank" rel="noopener noreferrer" className="bg-wa hover:bg-wa-dark text-white px-6 py-3.5 rounded-full font-bold text-base flex items-center gap-2 transition-all hover:scale-105">
                   <MessageCircle className="w-5 h-5" /> Pedir por WhatsApp
