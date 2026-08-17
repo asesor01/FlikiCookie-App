@@ -1,4 +1,4 @@
-export interface MenuItem {
+﻿export interface MenuItem {
   id: string;
   name: string;
   description: string;
@@ -8,20 +8,22 @@ export interface MenuItem {
   prepTime: string;
   allergens?: string[];
   wholesalePrice?: number;         // Precio por mayor
-  wholesaleMinQty?: number;        // Cantidad mínima para precio por mayor
-  seasonalTag?: string;            // Etiqueta de temporada (Navidad, Día del Padre, Graduación, etc.)
+  wholesaleMinQty?: number;        // Cantidad mÃ­nima para precio por mayor
+  seasonalTag?: string;            // Etiqueta de temporada (Navidad, DÃ­a del Padre, GraduaciÃ³n, etc.)
   promoPrice?: number;             // Precio de oferta de temporada
   stock?: number;                  // Stock disponible de producto terminado (e.g. galletas listas)
-  criticalStock?: number;          // Umbral de stock crítico
+  criticalStock?: number;          // Umbral de stock crÃ­tico
+videoUrl?: string;         // URL de video del producto (public/videos/...)
+longDescription?: string;  // Descripcion ampliada para la ficha
 }
 
 export interface CustomCakeSpec {
   tiers: 1 | 2 | 3;
-  flavor: "Vainilla" | "Chocolate" | "Red Velvet" | "Zanahoria" | "Limón";
+  flavor: "Vainilla" | "Chocolate" | "Red Velvet" | "Zanahoria" | "LimÃ³n";
   filling: "Dulce de Leche" | "Mermelada de Fresa" | "Crema de Queso" | "Nutella" | "Ganache de Chocolate";
   frostingColor: string; // Hex color or descriptive color (e.g., "#FFB6C1" for Rose, "#FFF" for White, etc.)
   frostingName: string; // Spanish name for display (Rosado Pastel, Blanco Cremoso, etc.)
-  toppings: string[]; // ['Chispas de colores', 'Fresas frescas', 'Macarons', 'Flores de azúcar', 'Virutas de chocolate']
+  toppings: string[]; // ['Chispas de colores', 'Fresas frescas', 'Macarons', 'Flores de azÃºcar', 'Virutas de chocolate']
   inscription: string; // Text to write on the cake
 }
 
@@ -36,7 +38,7 @@ export interface OrderItem {
 
 export type OrderStatus =
   | "Pendiente"
-  | "En Preparación"
+  | "En PreparaciÃ³n"
   | "En Horno"
   | "Decorando"
   | "Listo"
@@ -117,7 +119,7 @@ export interface PurchaseOrder {
   providerName: string;
   items: PurchaseOrderItem[];
   totalAmount: number;
-  status: "Borrador" | "Enviado a Proveedor" | "En Tránsito" | "Recibido / Almacén" | "Cancelado";
+  status: "Borrador" | "Enviado a Proveedor" | "En TrÃ¡nsito" | "Recibido / AlmacÃ©n" | "Cancelado";
   paymentStatus: "Pendiente" | "Pagado Parcial" | "Pagado Total";
   createdAt: string;
   expectedDeliveryDate?: string;
@@ -190,12 +192,12 @@ export interface InventoryItem {
 }
 
 // ============================================
-// EQUIPOS Y DEPRECIACIÓN
+// EQUIPOS Y DEPRECIACIÃ“N
 // ============================================
 export interface Equipment {
   id: string;
   name: string;
-  category: "Horno" | "Batidora" | "Refrigeración" | "Envasadora" | "Utensilio" | "Otro";
+  category: "Horno" | "Batidora" | "RefrigeraciÃ³n" | "Envasadora" | "Utensilio" | "Otro";
   purchaseDate: string;
   purchasePrice: number;
   usefulLifeYears: number;
@@ -207,7 +209,7 @@ export interface Equipment {
 }
 
 // ============================================
-// FACTURACIÓN E IMPUESTOS
+// FACTURACIÃ“N E IMPUESTOS
 // ============================================
 export type InvoiceType = "Boleta" | "Factura" | "Nota de Venta";
 

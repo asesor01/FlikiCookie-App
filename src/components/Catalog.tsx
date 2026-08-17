@@ -12,7 +12,7 @@ interface CatalogProps {
 
 export default function Catalog({ onAddToCart, menuItems, initialCategory }: CatalogProps) {
   const [activeCategory, setActiveCategory] = useState<string>("todos"); const [customCats] = useState<string[]>(() => { try { return JSON.parse(localStorage.getItem("flikicookie_categories") || "[]"); } catch { return []; } });
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(""); const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
 
   const categories = [
     { id: "todos", label: "✨ Todo el Menú" },
@@ -43,7 +43,39 @@ export default function Catalog({ onAddToCart, menuItems, initialCategory }: Cat
 
   return (
     <div className="space-y-6">
-      {/* SEASONAL PROMOTIONAL BANNER */}
+      {selectedItem && (
+      <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4 animate-fade-in" onClick={() => setSelectedItem(null)}>
+        <div className="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto border border-art-border shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div className="relative h-56 bg-art-panel">
+            {(selectedItem.image.includes(".") || selectedItem.image.includes("/")) ? (
+              <img src={selectedItem.image} alt={selectedItem.name} className="w-full h-full object-cover" />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-7xl">🍪</div>
+            )}
+            <button onClick={() => setSelectedItem(null)} className="absolute top-3 right-3 bg-white/90 rounded-full w-8 h-8 font-bold cursor-pointer">✕</button>
+          </div>
+          <div className="p-6 space-y-3">
+            <h3 className="font-serif font-bold text-xl text-art-text">{selectedItem.name}</h3>
+            <p className="text-sm text-art-muted leading-relaxed">{(selectedItem as any).longDescription || selectedItem.description}</p>
+            {selectedItem.allergens && selectedItem.allergens.length > 0 && (
+              <div className="flex flex-wrap gap-1">
+                {selectedItem.allergens.map((a, i) => (
+                  <span key={i} className="bg-art-panel border border-art-border/30 text-art-text text-[11px] px-2 py-0.5 rounded font-bold">{a}</span>
+                ))}
+              </div>
+            )}
+            {(selectedItem as any).videoUrl && (
+              <video controls playsInline className="w-full rounded-xl border border-art-border" src={(selectedItem as any).videoUrl} />
+            )}
+            <div className="flex items-center justify-between pt-2">
+              <span className="font-serif font-bold text-2xl text-art-accent">{formatPrice(selectedItem.promoPrice ?? selectedItem.price)}</span>
+              <button onClick={(e) => { e.stopPropagation(); onAddToCart(selectedItem); setSelectedItem(null); }} className="bg-art-accent hover:bg-art-accent-hover text-white px-4 py-2 rounded-lg text-sm font-bold cursor-pointer">+ Agregar a la caja</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+    {/* SEASONAL PROMOTIONAL BANNER */}
       <div 
           className="relative rounded-2xl overflow-hidden border border-art-border shadow-md bg-white text-art-text group"
         id="catalog_promo_banner"
@@ -132,7 +164,7 @@ export default function Catalog({ onAddToCart, menuItems, initialCategory }: Cat
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className="group bg-white border border-art-border rounded-lg overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+              onClick={() => setSelectedItem(item)} className="group bg-white border border-art-border rounded-lg overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between cursor-pointer"
               id={`catalog_card_${item.id}`}
             >
               {/* Product Visual Representative */}
@@ -167,6 +199,7 @@ export default function Catalog({ onAddToCart, menuItems, initialCategory }: Cat
                 <span className="absolute top-3 right-3 text-[11px] font-bold uppercase bg-art-border text-art-bg px-2 py-0.5 rounded tracking-wider z-10">
                   {item.category}
                 </span>
+            {item.videoUrl && (<span className="absolute top-3 left-3 text-[11px] font-bold uppercase bg-art-accent text-white px-2 py-0.5 rounded tracking-wider z-10">🎬 Video</span>)}
               </div>
 
               {/* Product Details */}
@@ -232,7 +265,7 @@ export default function Catalog({ onAddToCart, menuItems, initialCategory }: Cat
                     </div>
 
                     <button
-                      onClick={() => onAddToCart(item)}
+                      onClick={(e) => { e.stopPropagation(); onAddToCart(item); }}
                       className="bg-art-accent hover:bg-art-accent active:scale-95 text-white p-2 px-4 rounded-lg text-xs font-bold cursor-pointer transition-all flex items-center gap-1.5 border border-art-text"
                       id={`btn_add_to_cart_${item.id}`}
                     >
