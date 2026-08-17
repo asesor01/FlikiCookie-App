@@ -2104,7 +2104,7 @@ export default function AdminDashboard({
         name: menuForm.name,
         description: menuForm.description,
         price: priceNum,
-        category: menuForm.category,
+        category: menuForm.category, videoUrl: (menuForm as any).videoUrl || undefined, longDescription: (menuForm as any).longDescription || undefined,
         prepTime: menuForm.prepTime,
         allergens: allergensArr,
         image: imgUrl,
@@ -2120,7 +2120,7 @@ export default function AdminDashboard({
         name: menuForm.name,
         description: menuForm.description,
         price: priceNum,
-        category: menuForm.category,
+        category: menuForm.category, videoUrl: (menuForm as any).videoUrl || undefined, longDescription: (menuForm as any).longDescription || undefined,
         prepTime: menuForm.prepTime,
         allergens: allergensArr,
         image: imgUrl,
@@ -4824,7 +4824,15 @@ export default function AdminDashboard({
                   </div>
 
                   <div className="space-y-1">
-                    <div className="flex gap-1.5 mb-1.5"><input id="input_new_category" type="text" placeholder="➕ Nueva categoría (ej. Tortas de Temporada)" className="flex-1 bg-white border border-art-border rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-art-accent" /><button type="button" onClick={() => { const inp = document.getElementById("input_new_category") as HTMLInputElement; const val = (inp?.value || "").trim(); if (!val) return; const cur: string[] = JSON.parse(localStorage.getItem("flikicookie_categories") || "[]"); if (!cur.includes(val)) { cur.push(val); localStorage.setItem("flikicookie_categories", JSON.stringify(cur)); } if (inp) inp.value = ""; setMenuForm({ ...menuForm, category: val }); }} className="bg-art-accent hover:bg-art-accent-hover text-white text-xs font-bold px-3 py-1.5 rounded-lg cursor-pointer">＋ Agregar</button></div><label className="text-[10px] font-bold uppercase tracking-wider text-art-muted">Categoría del Menú *</label>
+                    <div className="flex gap-1.5 mb-1.5"><input id="input_new_category" type="text" placeholder="➕ Nueva categoría (ej. Tortas de Temporada)" className="flex-1 bg-white border border-art-border rounded-lg px-3 py-1.5 text-xs focus:outline-none focus:ring-1 focus:ring-art-accent" /><button type="button" onClick={() => { const inp = document.getElementById("input_new_category") as HTMLInputElement; const val = (inp?.value || "").trim(); if (!val) return; const cur: string[] = JSON.parse(localStorage.getItem("flikicookie_categories") || "[]"); if (!cur.includes(val)) { cur.push(val); localStorage.setItem("flikicookie_categories", JSON.stringify(cur)); } if (inp) inp.value = ""; setMenuForm({ ...menuForm, category: val }); }} className="bg-art-accent hover:bg-art-accent-hover text-white text-xs font-bold px-3 py-1.5 rounded-lg cursor-pointer">＋ Agregar</button></div><div className="space-y-1">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-art-muted">🎬 Video del producto (opcional)</label>
+                    <input type="text" id="input_new_video" value={(menuForm as any).videoUrl || ""} onChange={(e) => setMenuForm({ ...menuForm, videoUrl: e.target.value } as any)} placeholder="public/videos/mi-galleta.mp4 o https://..." className="w-full bg-art-panel border border-art-border rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-art-accent" />
+                  </div>
+                  <div className="space-y-1">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-art-muted">📖 Descripción ampliada (ficha)</label>
+                    <textarea id="input_new_longdesc" rows={3} value={(menuForm as any).longDescription || ""} onChange={(e) => setMenuForm({ ...menuForm, longDescription: e.target.value } as any)} placeholder="Texturas, cortes, historia del producto..." className="w-full bg-art-panel border border-art-border rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-art-accent resize-y" />
+                  </div>
+<label className="text-[10px] font-bold uppercase tracking-wider text-art-muted">Categoría del Menú *</label>
                     <select
                       value={menuForm.category}
                       onChange={(e) => setMenuForm({ ...menuForm, category: e.target.value })}

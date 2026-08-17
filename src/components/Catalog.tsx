@@ -119,7 +119,6 @@ export default function Catalog({ onAddToCart, menuItems, initialCategory }: Cat
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
             />
-            <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-art-card via-transparent to-transparent opacity-80 md:opacity-90"></div>
           </div>
         </div>
       </div>
