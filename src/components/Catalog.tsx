@@ -64,9 +64,15 @@ export default function Catalog({ onAddToCart, menuItems, initialCategory }: Cat
                 ))}
               </div>
             )}
-            {(selectedItem as any).videoUrl && (
-              <video controls playsInline className="w-full rounded-xl border border-art-border" src={(selectedItem as any).videoUrl} />
-            )}
+            {(() => {
+              const v = String((selectedItem as any).videoUrl || "");
+              if (!v) return null;
+              const clean = v.replace(/^public/, "");
+              const src = clean.startsWith("http") ? clean : (clean.startsWith("/") ? clean : "/" + clean);
+              return (
+                <video controls playsInline preload="metadata" className="w-full aspect-video max-h-[45vh] object-contain bg-black rounded-xl border border-art-border" src={src} />
+              );
+            })()}
             <div className="flex items-center justify-between pt-2">
               <span className="font-serif font-bold text-2xl text-art-accent">{formatPrice(selectedItem.promoPrice ?? selectedItem.price)}</span>
               <button onClick={(e) => { e.stopPropagation(); onAddToCart(selectedItem); setSelectedItem(null); }} className="bg-art-accent hover:bg-art-accent-hover text-white px-4 py-2 rounded-lg text-sm font-bold cursor-pointer">+ Agregar a la caja</button>
