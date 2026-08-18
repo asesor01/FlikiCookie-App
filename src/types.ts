@@ -13,7 +13,8 @@
   promoPrice?: number;             // Precio de oferta de temporada
   stock?: number;                  // Stock disponible de producto terminado (e.g. galletas listas)
   criticalStock?: number;          // Umbral de stock crÃ­tico
-videoUrl?: string;         // URL de video del producto (public/videos/...)
+videoUrl?: string;
+imgPosition?: string;    // Encuadre de la foto: center/top/bottom/left/right         // URL de video del producto (public/videos/...)
 longDescription?: string;  // Descripcion ampliada para la ficha
 }
 

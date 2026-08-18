@@ -23,7 +23,7 @@ export default function Catalog({ onAddToCart, menuItems, initialCategory }: Cat
     { id: "temporada", label: "🎄 Especiales & Ofertas de Temporada" }
   ];
 
-  useEffect(() => { if (initialCategory) { const all = [...categories, ...customCats.map((c) => ({ id: c, label: "🏷️ " + c }))]; const found = all.find((c) => c.id.trim() === initialCategory.trim()); setActiveCategory(found ? found.id : initialCategory); } }, [initialCategory]); const filteredItems = menuItems.filter(item => {
+  useEffect(() => { if (initialCategory) { const all = [...categories, ...customCats.map((c) => ({ id: c, label: "🏷️ " + c }))]; const found = all.find((c) => c.id.trim() === initialCategory.trim()); setActiveCategory(found ? found.id : initialCategory); } }, [initialCategory]); const uniqueMenu = menuItems.filter((it, i) => { const key = (it.name || "").trim().toLowerCase(); return menuItems.map(o => (o.name || "").trim().toLowerCase()).lastIndexOf(key) === i; }); const filteredItems = uniqueMenu.filter(item => {
     let matchesCategory = false;
     if (activeCategory === "todos") {
       matchesCategory = true;
@@ -45,10 +45,10 @@ export default function Catalog({ onAddToCart, menuItems, initialCategory }: Cat
     <div className="space-y-6">
       {selectedItem && (
       <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4 animate-fade-in" onClick={() => setSelectedItem(null)}>
-        <div className="bg-white rounded-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto border border-art-border shadow-2xl" onClick={(e) => e.stopPropagation()}>
-          <div className="relative h-56 bg-art-panel">
+        <div className="bg-white rounded-2xl max-w-3xl w-full max-h-[92vh] overflow-y-auto border border-art-border shadow-2xl" onClick={(e) => e.stopPropagation()}>
+          <div className="relative h-80 bg-art-panel">
             {(selectedItem.image.includes(".") || selectedItem.image.includes("/")) ? (
-              <img src={selectedItem.image} alt={selectedItem.name} className="w-full h-full object-cover" />
+              <img src={selectedItem.image} alt={selectedItem.name} className="w-full h-full object-cover" style={{ objectPosition: (selectedItem as any).imgPosition || "center" }} />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-7xl">🍪</div>
             )}

@@ -2104,7 +2104,7 @@ export default function AdminDashboard({
         name: menuForm.name,
         description: menuForm.description,
         price: priceNum,
-        category: menuForm.category, videoUrl: (menuForm as any).videoUrl || undefined, longDescription: (menuForm as any).longDescription || undefined,
+        category: menuForm.category, imgPosition: (menuForm as any).imgPosition || undefined, videoUrl: (menuForm as any).videoUrl || undefined, longDescription: (menuForm as any).longDescription || undefined,
         prepTime: menuForm.prepTime,
         allergens: allergensArr,
         image: imgUrl,
@@ -2120,7 +2120,7 @@ export default function AdminDashboard({
         name: menuForm.name,
         description: menuForm.description,
         price: priceNum,
-        category: menuForm.category, videoUrl: (menuForm as any).videoUrl || undefined, longDescription: (menuForm as any).longDescription || undefined,
+        category: menuForm.category, imgPosition: (menuForm as any).imgPosition || undefined, videoUrl: (menuForm as any).videoUrl || undefined, longDescription: (menuForm as any).longDescription || undefined,
         prepTime: menuForm.prepTime,
         allergens: allergensArr,
         image: imgUrl,
@@ -4831,6 +4831,12 @@ export default function AdminDashboard({
                   <div className="space-y-1">
                     <label className="text-[10px] font-bold uppercase tracking-wider text-art-muted">📖 Descripción ampliada (ficha)</label>
                     <textarea id="input_new_longdesc" rows={3} value={(menuForm as any).longDescription || ""} onChange={(e) => setMenuForm({ ...menuForm, longDescription: e.target.value } as any)} placeholder="Texturas, cortes, historia del producto..." className="w-full bg-art-panel border border-art-border rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-art-accent resize-y" />
+                  </div>
+<div className="space-y-1">
+                    <label className="text-[10px] font-bold uppercase tracking-wider text-art-muted">🖼️ Encuadre de la foto en el cuadro</label>
+                    <select value={(menuForm as any).imgPosition || "center"} onChange={(e) => setMenuForm({ ...menuForm, imgPosition: e.target.value } as any)} className="w-full bg-art-panel border border-art-border rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-art-accent">
+                      <option value="center">Centro</option><option value="top">Arriba</option><option value="bottom">Abajo</option><option value="left">Izquierda</option><option value="right">Derecha</option>
+                    </select>
                   </div>
 <label className="text-[10px] font-bold uppercase tracking-wider text-art-muted">Categoría del Menú *</label>
                     <select
