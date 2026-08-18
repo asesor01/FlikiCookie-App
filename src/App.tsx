@@ -432,22 +432,22 @@ useEffect(() => { window.scrollTo({ top: 0 }); }, [activeTab]);
           <div className="mt-6 pt-4 border-t border-art-border">
             <p className="text-[10px] uppercase tracking-widest text-art-muted mb-3 font-bold">⚡ Respuestas Rápidas</p>
             <div className="space-y-1.5 max-h-48 overflow-y-auto">
-              \\{\\(\\(\\)\\ =>\\ \\{
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ try\\ \\{
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ const\\ saved\\ =\\ localStorage\\.getItem\\("flikicookie_quick_responses"\\);
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ const\\ responses\\ =\\ saved\\ \\?\\ JSON\\.parse\\(saved\\)\\ :\\ \\[];
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ return\\ responses\\.slice\\(0,\\ 6\\)\\.map\\(\\(qr:\\ \\{id:\\ string;\\ label:\\ string;\\ text:\\ string}\\)\\ =>\\ \\(
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ <details\\ key=\\{qr\\.id}\\ className="group\\ text-\\[10px]\\ text-art-muted\\ bg-white\\ border\\ border-art-border\\ rounded-lg\\ px-3\\ py-2\\ cursor-pointer\\ hover:border-art-accent\\ transition-all">
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ <summary\\ className="list-none\\ font-bold\\ flex\\ items-center\\ justify-between\\ gap-1">
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\{qr\\.label}
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ <span\\ className="text-art-accent\\ group-open:rotate-180\\ transition-transform">▾</span>
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ </summary>
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ <p\\ className="mt-2\\ whitespace-pre-line\\ leading-relaxed">\\{qr\\.text}</p>
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ <button\\ type="button"\\ onClick=\\{\\(e\\)\\ =>\\ \\{\\ e\\.preventDefault\\(\\);\\ e\\.stopPropagation\\(\\);\\ navigator\\.clipboard\\.writeText\\(qr\\.text\\);\\ }}\\ className="mt-2\\ bg-art-accent\\ hover:bg-art-accent-hover\\ text-white\\ rounded-md\\ px-2\\.5\\ py-1\\ font-bold\\ cursor-pointer">📋\\ Copiar</button>
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ </details>
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\)\\);
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ \\ }\\ catch\\ \\{\\ return\\ null;\\ }
-\\ \\ \\ \\ \\ \\ \\ \\ \\ \\ }\\)\\(\\)}
+              {(() => {
+                try {
+                  const saved = localStorage.getItem("flikicookie_quick_responses");
+                  const responses = saved ? JSON.parse(saved) : [];
+                  return responses.slice(0, 6).map((qr: {id: string; label: string; text: string}) => (
+                    <details key={qr.id} className="group text-[10px] text-art-muted bg-white border border-art-border rounded-lg px-3 py-2 cursor-pointer hover:border-art-accent transition-all">
+                      <summary className="list-none font-bold flex items-center justify-between gap-1">
+                        {qr.label}
+                        <span className="text-art-accent group-open:rotate-180 transition-transform">▾</span>
+                      </summary>
+                      <p className="mt-2 whitespace-pre-line leading-relaxed">{qr.text}</p>
+                      <button type="button" onClick={(e) => { e.preventDefault(); e.stopPropagation(); navigator.clipboard.writeText(qr.text); }} className="mt-2 bg-art-accent hover:bg-art-accent-hover text-white rounded-md px-2.5 py-1 font-bold cursor-pointer">📋 Copiar</button>
+                    </details>
+                  ));
+                } catch { return null; }
+              })()}
             </div>
           </div>
         </div>
