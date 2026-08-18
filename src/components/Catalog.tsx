@@ -12,7 +12,7 @@ interface CatalogProps {
 
 export default function Catalog({ onAddToCart, menuItems, initialCategory }: CatalogProps) {
   const [activeCategory, setActiveCategory] = useState<string>("todos"); const [customCats] = useState<string[]>(() => { try { return JSON.parse(localStorage.getItem("flikicookie_categories") || "[]"); } catch { return []; } });
-  const [searchQuery, setSearchQuery] = useState(""); const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null);
+  const [searchQuery, setSearchQuery] = useState(""); const [selectedItem, setSelectedItem] = useState<MenuItem | null>(null); const [videoSrc, setVideoSrc] = useState<string | null>(null);
 
   const categories = [
     { id: "todos", label: "✨ Todo el Menú" },
@@ -67,10 +67,11 @@ export default function Catalog({ onAddToCart, menuItems, initialCategory }: Cat
             {(() => {
               const v = String((selectedItem as any).videoUrl || "");
               if (!v) return null;
-              const clean = v.replace(/^public/, "");
+              const m = v.match(/\/src\/assets\/[^"']+$/);
+              const clean = m ? m[0] : v.replace(/^public/, "");
               const src = clean.startsWith("http") ? clean : (clean.startsWith("/") ? clean : "/" + clean);
               return (
-                <video controls playsInline preload="metadata" className="w-full aspect-video max-h-[45vh] object-contain bg-black rounded-xl border border-art-border" src={src} />
+                <button type="button" onClick={() => setVideoSrc(src)} className="w-full bg-art-brown hover:opacity-90 text-white rounded-xl py-3 px-4 font-bold text-sm cursor-pointer">🎬 Ver el video en pantalla completa</button>
               );
             })()}
             <div className="flex items-center justify-between pt-2">
@@ -78,6 +79,14 @@ export default function Catalog({ onAddToCart, menuItems, initialCategory }: Cat
               <button onClick={(e) => { e.stopPropagation(); onAddToCart(selectedItem); setSelectedItem(null); }} className="bg-art-accent hover:bg-art-accent-hover text-white px-4 py-2 rounded-lg text-sm font-bold cursor-pointer">+ Agregar a la caja</button>
             </div>
           </div>
+        </div>
+      </div>
+    )}
+        {videoSrc && (
+      <div className="fixed inset-0 z-[70] bg-black/95 flex items-center justify-center p-4 animate-fade-in" onClick={() => setVideoSrc(null)}>
+        <div className="w-full max-w-5xl" onClick={(e) => e.stopPropagation()}>
+          <video controls autoPlay playsInline className="w-full aspect-video max-h-[85vh] object-contain bg-black rounded-xl" src={videoSrc} />
+          <button type="button" onClick={() => setVideoSrc(null)} className="mt-3 mx-auto block text-white/80 text-sm font-bold cursor-pointer">✕ Cerrar video</button>
         </div>
       </div>
     )}
