@@ -3,7 +3,7 @@ import { MenuItem } from "../types";
 import { INITIAL_MENU } from "../data";
 import { Search, ShoppingBag, Plus, Info, Clock, AlertTriangle, Sparkles, Gift, ArrowRight } from "lucide-react";
 // @ts-ignore
-import promoBannerImg from "../assets/images/flikicookie_promo_banner_1784665364256.jpg";
+import promoBannerImg from "../assets/images/Oferta FlikiCookie.jpg";
 
 interface CatalogProps {
   onAddToCart: (item: MenuItem | { isCustom: boolean; name: string; price: number }) => void;
