@@ -42,7 +42,11 @@ export default function App() {
   // Menu items list state with localStorage synchronization
   const [menuItems, setMenuItems] = useState<MenuItem[]>(() => {
     const saved = localStorage.getItem("flikicookie_menu");
-    return saved ? JSON.parse(saved) : INITIAL_MENU;
+    const raw: MenuItem[] = saved ? JSON.parse(saved) : INITIAL_MENU;
+    const keys = raw.map(o => (o.name || "").trim().toLowerCase());
+    const clean = raw.filter((_, i) => keys.lastIndexOf(keys[i]) === i);
+    if (saved && clean.length !== raw.length) localStorage.setItem("flikicookie_menu", JSON.stringify(clean));
+    return clean;
   });
 
   // Clients state with localStorage synchronization

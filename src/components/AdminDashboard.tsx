@@ -2132,7 +2132,7 @@ export default function AdminDashboard({
       setMenuItems(prev => [newMenuItem, ...prev]);
     }
 
-    setMenuForm({ name: "", description: "", price: "", category: "especiales", prepTime: "25 min", allergens: "", image: "", wholesalePrice: "", wholesaleMinQty: "", seasonalTag: "", promoPrice: "" });
+    setMenuForm({ name: "", description: "", price: "", category: "especiales", prepTime: "25 min", allergens: "", image: "", wholesalePrice: "", wholesaleMinQty: "", seasonalTag: "", promoPrice: "", videoUrl: "", longDescription: "", imgPosition: "center" } as any);
     setShowMenuForm(false);
   };
 
@@ -2150,7 +2150,7 @@ export default function AdminDashboard({
       wholesaleMinQty: item.wholesaleMinQty ? item.wholesaleMinQty.toString() : "",
       seasonalTag: item.seasonalTag || "",
       promoPrice: item.promoPrice ? item.promoPrice.toString() : ""
-    });
+    , videoUrl: (item as any).videoUrl || "", longDescription: (item as any).longDescription || "", imgPosition: (item as any).imgPosition || "center" } as any);
     setShowMenuForm(true);
   };
 
@@ -4791,7 +4791,7 @@ export default function AdminDashboard({
             <button
               onClick={() => {
                 setEditingMenu(null);
-                setMenuForm({ name: "", description: "", price: "", category: "especiales", prepTime: "25 min", allergens: "", image: "" });
+                setMenuForm({ name: "", description: "", price: "", category: "especiales", prepTime: "25 min", allergens: "", image: "", videoUrl: "", longDescription: "", imgPosition: "center" } as any);
                 setShowMenuForm(!showMenuForm);
               }}
               className="w-full md:w-auto bg-art-accent hover:bg-art-accent-hover text-white font-bold text-xs px-4 py-2.5 rounded-lg flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-xs"
