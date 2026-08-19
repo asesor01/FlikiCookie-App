@@ -7,6 +7,8 @@ import Catalog from "./components/Catalog";
 import AdminDashboard from "./components/AdminDashboard";
 import OrderTracking from "./components/OrderTracking";
 import FAQPage from "./components/FAQPage";
+const FAQ_SEED = [{id:"f1",category:"Pedidos",question:"¿Cómo hago un pedido?",answer:"Elige tus delicias en el catálogo, agrégalas a la caja y envía tu ticket por WhatsApp."},{id:"f2",category:"Pedidos",question:"¿Con cuánta anticipación debo pedir?",answer:"Pedidos regulares con 24 h; campañas y pedidos mayores con 48 h."},{id:"f3",category:"Pagos",question:"¿Qué métodos de pago aceptan?",answer:"Yape, Plin, transferencia y efectivo contra entrega en Cusco."},{id:"f4",category:"Pagos",question:"¿Emiten boleta?",answer:"Sí, boleta o recibo electrónico por cada pedido."},{id:"f5",category:"Entrega",question:"¿Hacen entregas a domicilio?",answer:"Sí en Cusco ciudad (costo por zona); recojo en taller gratis."},{id:"f6",category:"Entrega",question:"¿Horario de entrega?",answer:"Lunes a sábado de 9:00 a 19:00 h."},{id:"f7",category:"Personalización",question:"¿Puedo personalizar mi torta o caja?",answer:"Sí: dedicatoria a mano gratis y diseños de autor en el Atelier."},{id:"f8",category:"Alérgenos",question:"¿Tienen opciones sin gluten?",answer:"Preparamos recetas sin gluten bajo pedido; consulta el día."}];
+function faqSeed() { try { const r = JSON.parse(localStorage.getItem("flikicookie_faq") || "[]"); return (Array.isArray(r) && r.length) ? r : FAQ_SEED; } catch { return FAQ_SEED; } }
 import ReviewMachine from "./components/ReviewMachine";
 import LandingPage from "./components/LandingPage";
 import { ShoppingCart, ShoppingBag, MapPin, Sparkles, Wand2, Calendar, Clock, Phone, Mail, User, CreditCard, ChevronRight, CheckCircle, Info, Heart, HelpCircle, Star, Home } from "lucide-react";
@@ -846,7 +848,7 @@ useEffect(() => { window.scrollTo({ top: 0 }); }, [activeTab]);
               </div>
             </div>
             <FAQPage 
-              faqItems={(() => { const _r = JSON.parse(localStorage.getItem("flikicookie_faq") || "[]"); if (_r.length) return _r; return ([{id:"f1",category:"Pedidos",question:"¿Cómo hago un pedido?",answer:"Elige tus delicias en el catálogo, agrégalas a la caja y envía tu ticket por WhatsApp."},{id:"f2",category:"Pedidos",question:"¿Con cuánta anticipación debo pedir?",answer:"Pedidos regulares con 24 h; campañas y pedidos mayores con 48 h."},{id:"f3",category:"Pagos",question:"¿Qué métodos de pago aceptan?",answer:"Yape, Plin, transferencia y efectivo contra entrega en Cusco."},{id:"f4",category:"Pagos",question:"¿Emiten boleta?",answer:"Sí, boleta o recibo electrónico por cada pedido."},{id:"f5",category:"Entrega",question:"¿Hacen entregas a domicilio?",answer:"Sí en Cusco ciudad (costo por zona); recojo en taller gratis."},{id:"f6",category:"Entrega",question:"¿Horario de entrega?",answer:"Lunes a sábado de 9:00 a 19:00 h."},{id:"f7",category:"Personalización",question:"¿Puedo personalizar mi torta o caja?",answer:"Sí: dedicatoria a mano gratis y diseños de autor en el Atelier."},{id:"f8",category:"Alérgenos",question:"¿Tienen opciones sin gluten?",answer:"Preparamos recetas sin gluten bajo pedido; consulta el día."}]})()} 
+              faqItems={faqSeed()}
             />
           </div>
         )}
