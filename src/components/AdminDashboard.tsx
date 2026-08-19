@@ -4833,6 +4833,8 @@ export default function AdminDashboard({
                     <textarea id="input_new_longdesc" rows={3} value={(menuForm as any).longDescription || ""} onChange={(e) => setMenuForm({ ...menuForm, longDescription: e.target.value } as any)} placeholder="Texturas, cortes, historia del producto..." className="w-full bg-art-panel border border-art-border rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-art-accent resize-y" />
                   </div>
 <div className="space-y-1">
+                    <p className="text-[9px] leading-relaxed text-art-muted bg-art-panel border border-art-border/40 rounded-md px-2 py-1">📐 <b>Regla de fotos:</b> sube imágenes <b>horizontales 4:3</b> (mín. 800×600 px) para que se enmarquen solas. Las verticales se recortan; elige abajo la zona visible.</p>
+                    <p className="text-[9px] leading-relaxed text-art-muted bg-art-panel border border-art-border/40 rounded-md px-2 py-1">📐 <b>Regla de fotos:</b> sube imágenes <b>horizontales 4:3</b> (mín. 800×600 px) para que se enmarquen solas. Las verticales se recortan; elige abajo la zona visible.</p>
                     <label className="text-[10px] font-bold uppercase tracking-wider text-art-muted">🖼️ Encuadre de la foto en el cuadro</label>
                     <select value={(menuForm as any).imgPosition || "center"} onChange={(e) => setMenuForm({ ...menuForm, imgPosition: e.target.value } as any)} className="w-full bg-art-panel border border-art-border rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-art-accent">
                       <option value="center">Centro</option><option value="top">Arriba</option><option value="bottom">Abajo</option><option value="left">Izquierda</option><option value="right">Derecha</option>
@@ -4970,7 +4972,7 @@ export default function AdminDashboard({
                           <img
                             src={menuForm.image}
                             alt="Preview"
-                            className="max-h-24 object-cover rounded border border-art-border shadow-xs"
+                            className="w-full h-44 object-cover rounded-lg border border-art-border" style={{ objectPosition: (menuForm as any).imgPosition || "center" }}
                           />
                           <p className="text-[9px] text-art-muted mt-2 font-medium">Click para reemplazar imagen</p>
                           <button
