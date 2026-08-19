@@ -76,6 +76,12 @@ export default function LandingPage({ onNavigate }: { onNavigate?: (tab: Tab, ca
                 En FlikiCookie creamos tortas, galletas y pasteles artesanales que convierten cada celebración en un recuerdo especial.
                 <span className="font-bold text-art-text"> Hechos con amor en Cusco.</span>
               </p>
+           <div className="flex flex-wrap items-center gap-2 pt-3">
+             {["Galletas", "Brownies", "Tortas", "Bollería"].map((cat) => (
+               <span key={cat} className="bg-white border border-art-border text-art-text text-[12px] font-bold px-3 py-1 rounded-full">{cat}</span>
+             ))}
+             <span className="text-[12px] font-bold text-art-muted px-1">✦ Desde el 4 de Mayo de 2020</span>
+           </div>
               <div className="flex flex-wrap gap-3">
                 <button onClick={() => go("designer")} className="bg-art-accent hover:bg-art-accent-hover text-white px-6 py-3.5 rounded-full font-bold text-base flex items-center gap-2 transition-all hover:scale-105 shadow-lg shadow-art-accent/30 cursor-pointer">
                   <Cake className="w-5 h-5" /> Diseña tu Pastel
