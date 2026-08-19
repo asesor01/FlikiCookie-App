@@ -5,7 +5,7 @@ const MENU_HIGHLIGHTS = [
   { name: "Tortas Personalizadas", description: "Diseños únicos para tus momentos especiales", icon: Cake, priceDesde: "S/. 85", target: "designer" },
   { name: "Galletas Artesanales", description: "Deliciosas galletas con sabores irresistibles", icon: Cookie, priceDesde: "S/. 3", target: "catalog:rellenas" },
   { name: "Pasteles Creativos", description: "Obras de arte comestibles que sorprenden", icon: Sparkles, priceDesde: "S/. 120", target: "catalog:especiales" },
-  { name: "Café & Bebidas", description: "Acompaña tus dulces con nuestra selección", icon: Coffee, priceDesde: "S/. 8", target: "catalog:bebidas" },
+  { name: "Bollerías, Café & Bebidas", description: "Croissants, panes artesanales y bebidas para acompañar", icon: Coffee, priceDesde: "S/. 8", target: "catalog:bebidas" },
 ];
 
 type Tab = "landing" | "designer" | "catalog" | "track" | "admin" | "faq" | "reviews";
@@ -89,7 +89,7 @@ export default function LandingPage({ onNavigate }: { onNavigate?: (tab: Tab, ca
                 <button onClick={() => go("catalog")} className="border-2 border-art-border text-art-muted px-6 py-3.5 rounded-full font-bold text-base hover:bg-art-border hover:text-art-bg transition-all cursor-pointer">
                   Catálogo & Menú
                 </button>
-                <a href="https://wa.me/51970442173" target="_blank" rel="noopener noreferrer" className="bg-wa hover:bg-wa-dark text-white px-6 py-3.5 rounded-full font-bold text-base flex items-center gap-2 transition-all hover:scale-105">
+                <a href="https://wa.me/51970442173?text=Hola%20FlikiCookie!%20Vengo%20de%20la%20p%C3%A1gina%20web%20y%20me%20gustar%C3%ADa%20hacer%20un%20pedido%20o%20consulta." target="_blank" rel="noopener noreferrer" className="bg-wa hover:bg-wa-dark text-white px-6 py-3.5 rounded-full font-bold text-base flex items-center gap-2 transition-all hover:scale-105">
                   <MessageCircle className="w-5 h-5" /> Pedir por WhatsApp
                 </a>
               </div>

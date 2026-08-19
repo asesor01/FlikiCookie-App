@@ -358,78 +358,78 @@ useEffect(() => { window.scrollTo({ top: 0 }); }, [activeTab]);
           <nav className="space-y-6">
             <div 
               onClick={() => setActiveTab("landing")}
-              className={`group cursor-pointer transition-all ${activeTab === "landing" ? "opacity-100" : "opacity-60 hover:opacity-90"}`}
+              className={`group cursor-pointer transition-all rounded-xl px-2 py-1.5 border border-transparent hover:bg-white hover:border-art-border hover:shadow-[0_3px_0_#E5A84B] ${activeTab === "landing" ? "opacity-100" : "opacity-100"}`}
             >
-              <p className="text-[11px] uppercase tracking-widest text-art-muted mb-2 font-bold">Home</p>
+              <p className="text-[11px] uppercase tracking-widest text-art-brown mb-2 font-extrabold">Home</p>
               <p className="inline-flex items-center gap-3">
                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-art-accent-10 text-art-accent font-bold">🏠</span>
-                <span className="text-[15px] font-serif text-art-accent-dark">Página Principal</span>
+                <span className="text-[15px] font-serif text-art-accent-dark font-bold">Página Principal</span>
               </p>
             </div>
 
             <div 
               onClick={() => setActiveTab("designer")}
-              className={`group cursor-pointer transition-all ${activeTab === "designer" ? "opacity-100" : "opacity-60 hover:opacity-90"}`}
+              className={`group cursor-pointer transition-all rounded-xl px-2 py-1.5 border border-transparent hover:bg-white hover:border-art-border hover:shadow-[0_3px_0_#E5A84B] ${activeTab === "designer" ? "opacity-100" : "opacity-100"}`}
             >
-              <p className="text-[11px] uppercase tracking-widest text-art-muted mb-2 font-bold">Atelier View</p>
+              <p className="text-[11px] uppercase tracking-widest text-art-brown mb-2 font-extrabold">Atelier View</p>
               <p className="inline-flex items-center gap-3">
                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-art-accent-10 text-art-accent font-bold">🍰</span>
-                <span className="text-[15px] font-serif text-art-accent-dark">Diseña tu Pastel</span>
+                <span className="text-[15px] font-serif text-art-accent-dark font-bold">Diseña tu Pastel</span>
               </p>
             </div>
 
             <div 
               onClick={() => setActiveTab("catalog")}
-              className={`group cursor-pointer transition-all ${activeTab === "catalog" ? "opacity-100" : "opacity-60 hover:opacity-90"}`}
+              className={`group cursor-pointer transition-all rounded-xl px-2 py-1.5 border border-transparent hover:bg-white hover:border-art-border hover:shadow-[0_3px_0_#E5A84B] ${activeTab === "catalog" ? "opacity-100" : "opacity-100"}`}
             >
-              <p className="text-[11px] uppercase tracking-widest text-art-muted mb-2 font-bold">Pantry & Vitrine</p>
+              <p className="text-[11px] uppercase tracking-widest text-art-brown mb-2 font-extrabold">Pantry & Vitrine</p>
               <p className="inline-flex items-center gap-3">
                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-art-accent-10 text-art-accent font-bold">🥐</span>
-                <span className="text-[15px] font-serif text-art-accent-dark">Catálogo & Menú</span>
+                <span className="text-[15px] font-serif text-art-accent-dark font-bold">Catálogo & Menú</span>
               </p>
             </div>
 
             <div 
               onClick={() => setActiveTab("track")}
-              className={`group cursor-pointer transition-all ${activeTab === "track" ? "opacity-100" : "opacity-60 hover:opacity-90"}`}
+              className={`group cursor-pointer transition-all rounded-xl px-2 py-1.5 border border-transparent hover:bg-white hover:border-art-border hover:shadow-[0_3px_0_#E5A84B] ${activeTab === "track" ? "opacity-100" : "opacity-100"}`}
             >
-              <p className="text-[11px] uppercase tracking-widest text-art-muted mb-2 font-bold">Sales & Status</p>
+              <p className="text-[11px] uppercase tracking-widest text-art-brown mb-2 font-extrabold">Sales & Status</p>
               <p className="inline-flex items-center gap-3">
                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-art-accent-10 text-art-accent font-bold">📦</span>
-                <span className="text-[15px] font-serif text-art-accent-dark">Sigue tu Pedido</span>
+                <span className="text-[15px] font-serif text-art-accent-dark font-bold">Sigue tu Pedido</span>
               </p>
             </div>
 
             <div 
               onClick={() => setActiveTab("faq")}
-              className={`group cursor-pointer transition-all ${activeTab === "faq" ? "opacity-100" : "opacity-60 hover:opacity-90"}`}
+              className={`group cursor-pointer transition-all rounded-xl px-2 py-1.5 border border-transparent hover:bg-white hover:border-art-border hover:shadow-[0_3px_0_#E5A84B] ${activeTab === "faq" ? "opacity-100" : "opacity-100"}`}
             >
-              <p className="text-[11px] uppercase tracking-widest text-art-muted mb-2 font-bold">Support</p>
+              <p className="text-[11px] uppercase tracking-widest text-art-brown mb-2 font-extrabold">Support</p>
               <p className="inline-flex items-center gap-3">
                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-art-accent-10 text-art-accent font-bold">❓</span>
-                <span className="text-[15px] font-serif text-art-accent-dark">Preguntas Frecuentes</span>
+                <span className="text-[15px] font-serif text-art-accent-dark font-bold">Preguntas Frecuentes</span>
               </p>
             </div>
 
             <div 
               onClick={() => setActiveTab("reviews")}
-              className={`group cursor-pointer transition-all ${activeTab === "reviews" ? "opacity-100" : "opacity-60 hover:opacity-90"}`}
+              className={`group cursor-pointer transition-all rounded-xl px-2 py-1.5 border border-transparent hover:bg-white hover:border-art-border hover:shadow-[0_3px_0_#E5A84B] ${activeTab === "reviews" ? "opacity-100" : "opacity-100"}`}
             >
-              <p className="text-[11px] uppercase tracking-widest text-art-muted mb-2 font-bold">Feedback</p>
+              <p className="text-[11px] uppercase tracking-widest text-art-brown mb-2 font-extrabold">Feedback</p>
               <p className="inline-flex items-center gap-3">
                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-art-accent-10 text-art-accent font-bold">⭐</span>
-                <span className="text-[15px] font-serif text-art-accent-dark">Opiniones</span>
+                <span className="text-[15px] font-serif text-art-accent-dark font-bold">Opiniones</span>
               </p>
             </div>
 
             <div 
               onClick={() => setActiveTab("admin")}
-              className={`group cursor-pointer transition-all ${activeTab === "admin" ? "opacity-100" : "opacity-60 hover:opacity-90"}`}
+              className={`group cursor-pointer transition-all rounded-xl px-2 py-1.5 border border-transparent hover:bg-white hover:border-art-border hover:shadow-[0_3px_0_#E5A84B] ${activeTab === "admin" ? "opacity-100" : "opacity-100"}`}
             >
-              <p className="text-[11px] uppercase tracking-widest text-art-muted mb-2 font-bold">Intelligence</p>
+              <p className="text-[11px] uppercase tracking-widest text-art-brown mb-2 font-extrabold">Intelligence</p>
               <p className="inline-flex items-center gap-3">
                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-art-accent-10 text-art-accent font-bold">📊</span>
-                <span className="text-[15px] font-serif text-art-accent-dark font-bold">Gestión Taller</span>
+                <span className="text-[15px] font-serif text-art-accent-dark font-bold font-bold">Gestión Taller</span>
               </p>
             </div>
           </nav>
